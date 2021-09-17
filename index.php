@@ -4,6 +4,15 @@
 	<title></title>
 </head>
 <body>
-dd
+<?php
+	ini_set('display_errors', 1);
+	$model = new Model();
+	$controller = new Controller($model);
+	$view = new View($controller, $model);
+	if (isset($_GET['action']) && !empty($_GET['action'])) {
+	    $controller->{$_GET['action']}();
+	}
+	echo $view->output();
+?>
 </body>
 </html>
